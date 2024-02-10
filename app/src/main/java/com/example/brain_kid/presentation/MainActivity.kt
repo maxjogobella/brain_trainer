@@ -7,6 +7,6 @@ import com.example.brain_kid.R
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_level)
+        setContentView(R.layout.fragment_game)
     }
 }
