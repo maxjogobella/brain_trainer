@@ -13,7 +13,7 @@
         android:background="#aeeab0">
 
         <TextView
-            android:id="@+id/titleRule"
+            android:id="@+id/titleLevel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="32dp"
             android:text="@string/test"
-            app:layout_constraintTop_toBottomOf="@+id/titleRule"
+            app:layout_constraintTop_toBottomOf="@+id/titleLevel"
             tools:layout_editor_absoluteX="32dp" />
 
         <Button
