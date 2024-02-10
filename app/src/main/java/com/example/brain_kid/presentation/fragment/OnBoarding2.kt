@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.brain_kid.R
 import com.example.brain_kid.databinding.Onboarding2Binding
 
 class OnBoarding2 : Fragment() {
@@ -23,8 +24,27 @@ class OnBoarding2 : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.buttonOnBoarding2.setOnClickListener{
+            launchOnFragmentLevel()
+        }
+    }
+
+    private fun launchOnFragmentLevel() {
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.main_container, FragmentLevel.newInstance())
+            .commit()
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        fun newInstance() : OnBoarding2 {
+            return OnBoarding2()
+        }
     }
 }
