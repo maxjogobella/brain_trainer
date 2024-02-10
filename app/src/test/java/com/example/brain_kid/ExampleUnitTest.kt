@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.brain_kid
 
 import org.junit.Test
 
