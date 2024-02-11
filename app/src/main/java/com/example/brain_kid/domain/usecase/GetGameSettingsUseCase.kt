@@ -5,6 +5,7 @@ import com.example.brain_kid.domain.model.Level
 import com.example.brain_kid.domain.repository.GameRepository
 
 class GetGameSettingsUseCase(
+
     private val repository: GameRepository
 ) {
     operator fun invoke(level : Level) : GameSetting {

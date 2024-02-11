@@ -20,4 +20,5 @@
     <string name="test">Тестовый</string>
     <string name="medium">Средний</string>
     <string name="hard">Тяжелый</string>
+    <string name="percent_right">Правильных ответов %s (минимум) %s</string>
 </resources>

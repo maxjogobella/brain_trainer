@@ -7,12 +7,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.brain_kid.R
+import com.example.brain_kid.data.GameRepositoryImpl
 import com.example.brain_kid.databinding.FragmentGameBinding
 import com.example.brain_kid.domain.model.GameResult
 import com.example.brain_kid.domain.model.GameSetting
 import com.example.brain_kid.domain.model.Level
+import com.example.brain_kid.presentation.viewmodel.FragmentGameViewModel
 
 class FragmentGame : Fragment() {
+
+
+    private val viewModel : FragmentGameViewModel by lazy {
+        FragmentGameViewModel(
+            repository = GameRepositoryImpl,
+            application = requireActivity().application)
+    }
 
     private var _binding : FragmentGameBinding? = null
     private lateinit var level : Level
@@ -33,6 +42,7 @@ class FragmentGame : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.tvQuestionNumber.setOnClickListener {
+
             val gameSetting = GameSetting(
                 maxSumValue = 20,
                 minCountOfRightAnswers = 20,
@@ -54,6 +64,29 @@ class FragmentGame : Fragment() {
                 .addToBackStack(null)
                 .commit()
         }
+
+////        viewModel.setGameSettings(level)
+//
+//        viewModel.numberSum.observe(viewLifecycleOwner) {
+//            binding.tvSumNumber.text = it.toString()
+//        }
+//
+//        viewModel.visibleNumber.observe(viewLifecycleOwner) {
+//            binding.tvVisibleNumber.text = it.toString()
+//        }
+
+        viewModel.seconds.observe(viewLifecycleOwner) {
+            binding.chronometer.text = it.toString()
+        }
+
+        viewModel.listOfOptions.observe(viewLifecycleOwner) {list ->
+            binding.option1.text = list[0].toString()
+            binding.option2.text = list[1].toString()
+            binding.option3.text = list[2].toString()
+            binding.option4.text = list[3].toString()
+        }
+
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,7 +108,6 @@ class FragmentGame : Fragment() {
     }
 
     companion object {
-
         private const val EXTRA_KEY_LEVEL = "level"
         const val NAME_BACKSTACK = "FragmentGame"
         fun newInstance(level : Level) : FragmentGame {
