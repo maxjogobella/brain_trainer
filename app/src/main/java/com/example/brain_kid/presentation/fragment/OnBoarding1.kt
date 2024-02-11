@@ -41,6 +41,4 @@ class OnBoarding1 : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-
 }

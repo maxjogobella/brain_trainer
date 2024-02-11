@@ -28,27 +28,31 @@ class FragmentLevel : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        binding.buttonTestLevel.setOnClickListener {
-            launchOnFragmentGame(level = Level.TEST)
-        }
+        with(binding) {
 
-        binding.buttonEasyLevel.setOnClickListener {
-            launchOnFragmentGame(level = Level.EASY)
-        }
+            buttonTestLevel.setOnClickListener {
+                launchOnFragmentGame(level = Level.TEST)
+            }
 
+            buttonEasyLevel.setOnClickListener {
+                launchOnFragmentGame(level = Level.EASY)
+            }
 
-        binding.buttonMediumLevel.setOnClickListener {
-            launchOnFragmentGame(level = Level.MEDIUM)
-        }
+            buttonMediumLevel.setOnClickListener {
+                launchOnFragmentGame(level = Level.MEDIUM)
+            }
 
-        binding.buttonHardLevel.setOnClickListener {
-            launchOnFragmentGame(level = Level.HARD)
+            buttonHardLevel.setOnClickListener {
+                launchOnFragmentGame(level = Level.HARD)
+            }
         }
     }
+
 
     private fun launchOnFragmentGame(level : Level) {
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.main_container, FragmentGame.newInstance(level))
+            .addToBackStack(FragmentGame.NAME_BACKSTACK)
             .commit()
     }
 
@@ -58,6 +62,8 @@ class FragmentLevel : Fragment() {
     }
 
     companion object {
+
+        const val NAME = "FragmentLevel"
         fun newInstance() : FragmentLevel {
             return FragmentLevel()
         }

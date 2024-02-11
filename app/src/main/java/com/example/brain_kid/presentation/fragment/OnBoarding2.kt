@@ -34,6 +34,7 @@ class OnBoarding2 : Fragment() {
     private fun launchOnFragmentLevel() {
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.main_container, FragmentLevel.newInstance())
+            .addToBackStack(null)
             .commit()
     }
 
