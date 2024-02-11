@@ -32,12 +32,11 @@ class FragmentGameViewModel(
     val percentOfRightAnswers : LiveData<Int>
         get() = _percentOfRightAnswers
 
-    private val _question = MutableLiveData<Question>()
-
     private val _progressAnswers = MutableLiveData<String>()
     val progressAnswers : LiveData<String>
         get() = _progressAnswers
 
+    private val _question = MutableLiveData<Question>()
     val question : LiveData<Question>
         get() = _question
 
