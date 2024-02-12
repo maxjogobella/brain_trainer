@@ -5,7 +5,6 @@ import com.example.brain_kid.domain.model.Level
 import com.example.brain_kid.domain.model.Question
 
 interface GameRepository {
-
     fun generateQuestion(
         maxSumValue : Int,
         countOfOptions : Int

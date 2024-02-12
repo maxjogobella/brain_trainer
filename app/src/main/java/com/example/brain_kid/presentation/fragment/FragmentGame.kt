@@ -9,20 +9,28 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.example.brain_kid.R
 import com.example.brain_kid.data.GameRepositoryImpl
 import com.example.brain_kid.databinding.FragmentGameBinding
 import com.example.brain_kid.domain.model.GameResult
 import com.example.brain_kid.domain.model.Level
 import com.example.brain_kid.presentation.viewmodel.FragmentGameViewModel
+import com.example.brain_kid.presentation.viewmodel.ViewModelFactory
 
 class FragmentGame : Fragment() {
 
+    private val viewModelFactory : ViewModelFactory by lazy {
+        ViewModelFactory(
+            application = requireActivity().application,
+            level = level,
+            repository = GameRepositoryImpl
+        )
+    }
 
     private val viewModel : FragmentGameViewModel by lazy {
-        FragmentGameViewModel(
-            repository = GameRepositoryImpl,
-            application = requireActivity().application)
+        ViewModelProvider(this, viewModelFactory)[FragmentGameViewModel::class.java]
     }
 
     private val tvOptions by lazy {
@@ -52,7 +60,6 @@ class FragmentGame : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
-        viewModel.startGame(level)
         setClickListenerToOptions()
 
     }
