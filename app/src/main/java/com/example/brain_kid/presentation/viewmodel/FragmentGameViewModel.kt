@@ -40,17 +40,9 @@ class FragmentGameViewModel(
     val question : LiveData<Question>
         get() = _question
 
-    private val _numberSum = MutableLiveData<Int>()
-    val numberSum : LiveData<Int>
-        get() = _numberSum
-
     private val _seconds = MutableLiveData<String>()
     val seconds : LiveData<String>
         get() = _seconds
-
-    private val _listOfOptions = MutableLiveData<List<Int>>()
-    val listOfOptions : LiveData<List<Int>>
-        get() = _listOfOptions
 
     private val _enoughCount = MutableLiveData<Boolean>()
     val enoughCount : LiveData<Boolean>
@@ -68,15 +60,14 @@ class FragmentGameViewModel(
     val gameResult : LiveData<GameResult>
         get() = _gameResult
 
-
-
     fun startGame(level : Level) {
         getGameSettings(level)
         startTimer()
         generateQuestion()
+        updateProgress()
     }
 
-    private fun chooseAnswer(number: Int) {
+    fun chooseAnswer(number: Int) {
         checkAnswer(number)
         updateProgress()
         generateQuestion()
@@ -112,6 +103,9 @@ class FragmentGameViewModel(
     }
 
     private fun calculatePercentOfRightAnswers() : Int {
+        if (countOfQuestions == 0) {
+            return 0
+        }
         return ((countOfRightAnswers.toDouble() / countOfQuestions) * 100).toInt()
     }
 
