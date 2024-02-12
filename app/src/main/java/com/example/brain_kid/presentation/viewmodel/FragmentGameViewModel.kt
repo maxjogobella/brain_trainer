@@ -94,7 +94,7 @@ class FragmentGameViewModel(
         val percent = calculatePercentOfRightAnswers()
         _percentOfRightAnswers.value = percent
         _progressAnswers.value = String.format(
-            context.resources.getString(R.string.percent_right),
+            context.resources.getString(R.string.right_answers),
             countOfRightAnswers,
             gameSetting.minCountOfRightAnswers
         )

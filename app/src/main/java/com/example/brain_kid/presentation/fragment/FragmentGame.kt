@@ -37,7 +37,7 @@ class FragmentGame : Fragment() {
     private var _binding : FragmentGameBinding? = null
     private lateinit var level : Level
     private val binding : FragmentGameBinding
-        get() = _binding ?: throw RuntimeException("Fragmen tGameBinding == null")
+        get() = _binding ?: throw RuntimeException("Fragment tGameBinding == null")
 
 
     override fun onCreateView(
