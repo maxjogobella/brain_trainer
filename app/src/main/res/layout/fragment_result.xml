@@ -10,9 +10,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#aeeab0">
+        android:background="@color/main_color">
 
         <ImageView
+            android:adjustViewBounds="true"
             android:id="@+id/emoji_result"
             android:layout_width="256dp"
             android:layout_height="256dp"
@@ -58,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:alpha="0.5"
             android:text="@string/score_answers"
             android:textColor="@color/black"
@@ -99,9 +100,11 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_margin="32dp"
+            android:layout_marginTop="32dp"
             android:layout_marginBottom="32dp"
             android:text="@string/again_text"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_score_percentage"
             tools:layout_editor_absoluteX="32dp" />
 
 

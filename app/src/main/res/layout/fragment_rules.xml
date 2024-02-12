@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#aeeab0">
+        android:background="@color/main_color">
 
         <ImageView
             android:id="@+id/logoRule"
@@ -48,23 +48,27 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:alpha="0.5"
             android:text="@string/game_rules"
             android:textColor="@color/black"
             android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonFromRule"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titleResult" />
 
         <Button
             android:id="@+id/buttonFromRule"
+            style="@style/style_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="32dp"
+            android:layout_marginBottom="32dp"
             android:text="@string/letsgo"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/descriptionOnRule"
-            tools:layout_editor_absoluteX="32dp"
-            style="@style/style_button" />
+            tools:layout_editor_absoluteX="32dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

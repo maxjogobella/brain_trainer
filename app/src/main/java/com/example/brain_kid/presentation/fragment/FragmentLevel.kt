@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.example.brain_kid.R
 import com.example.brain_kid.databinding.FragmentLevelBinding
 import com.example.brain_kid.domain.model.Level
+import com.example.brain_kid.presentation.FragmentUtils
 
 class FragmentLevel : Fragment() {
 
@@ -45,6 +46,10 @@ class FragmentLevel : Fragment() {
             buttonHardLevel.setOnClickListener {
                 launchOnFragmentGame(level = Level.HARD)
             }
+
+            binding.tvShowRules.setOnClickListener {
+                launchOnFragmentRules()
+            }
         }
     }
 
@@ -60,6 +65,14 @@ class FragmentLevel : Fragment() {
             .replace(R.id.main_container, FragmentGame.newInstance(level))
             .addToBackStack(FragmentGame.NAME_BACKSTACK)
             .commit()
+    }
+
+    private fun launchOnFragmentRules() {
+        FragmentUtils.launchFragmentWithAnimation(
+            fragmentManager = requireActivity().supportFragmentManager,
+            containerId = R.id.main_container,
+            fragment = FragmentRules.newInstance()
+        )
     }
 
     override fun onDestroyView() {
