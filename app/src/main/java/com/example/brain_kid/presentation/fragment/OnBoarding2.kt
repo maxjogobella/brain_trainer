@@ -4,9 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.brain_kid.R
 import com.example.brain_kid.databinding.Onboarding2Binding
+import com.example.brain_kid.presentation.FragmentUtils
+import com.example.brain_kid.presentation.MainActivity
 
 class OnBoarding2 : Fragment() {
 
@@ -32,11 +35,26 @@ class OnBoarding2 : Fragment() {
     }
 
     private fun launchOnFragmentLevel() {
-        requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.main_container, FragmentLevel.newInstance())
-            .addToBackStack(null)
-            .commit()
+        FragmentUtils.launchFragmentWithAnimation(
+            requireActivity().supportFragmentManager,
+            R.id.main_container,
+            FragmentLevel.newInstance()
+        )
+
+        commitPreferences(MainActivity.SHARED_PREF_KEY_ONBOARDING,
+            MainActivity.ONBOARDING_INVISIBLE)
     }
+
+    private fun commitPreferences(
+        key : String,
+        value : Int
+    ) {
+        requireActivity().getSharedPreferences(
+            MainActivity.SHARED_PREF_NAME,
+            AppCompatActivity.MODE_PRIVATE
+        ).edit().putInt(key, value).apply()
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

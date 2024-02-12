@@ -51,6 +51,12 @@ class FragmentLevel : Fragment() {
 
     private fun launchOnFragmentGame(level : Level) {
         requireActivity().supportFragmentManager.beginTransaction()
+            .setCustomAnimations(
+                R.anim.slide_in,
+                R.anim.fade_out,
+                R.anim.fade_in,
+                R.anim.slide_out
+            )
             .replace(R.id.main_container, FragmentGame.newInstance(level))
             .addToBackStack(FragmentGame.NAME_BACKSTACK)
             .commit()
