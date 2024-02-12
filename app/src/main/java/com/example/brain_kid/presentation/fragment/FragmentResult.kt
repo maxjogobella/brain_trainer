@@ -66,6 +66,10 @@ class FragmentResult : Fragment() {
                 getString(R.string.score_percentage),
                 getPercentOfRightAnswers()
             )
+
+            buttonRetry.setOnClickListener {
+                restartGame()
+            }
         }
 
     }
