@@ -41,35 +41,38 @@ class FragmentResult : Fragment() {
         }
       requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 
+        binding.buttonRetry.setOnClickListener {
+            restartGame()
+        }
+
     }
 
     private fun bindViews() {
 
+        binding.gameResult = args.gameResult
+
         with(binding) {
             emojiResult.setImageResource(getSmilesResId())
-            tvRequiredAnswers.text = String.format(
-                getString(R.string.required_score),
-                args.gameResult.gameSettings.minCountOfRightAnswers,
-            )
-
-            tvScoreAnswers.text = String.format(
-                getString(R.string.score_answers),
-                args.gameResult.countOfRightAnswers
-            )
-
-            tvRequiredPercentage.text = String.format(
-                getString(R.string.required_percentage),
-                args.gameResult.gameSettings.minPercentOfRightAnswers
-            )
+//            tvRequiredAnswers.text = String.format(
+//                getString(R.string.required_score),
+//                args.gameResult.gameSettings.minCountOfRightAnswers,
+//            )
+//
+//            tvScoreAnswers.text = String.format(
+//                getString(R.string.score_answers),
+//                args.gameResult.countOfRightAnswers
+//            )
+//
+//            tvRequiredPercentage.text = String.format(
+//                getString(R.string.required_percentage),
+//                args.gameResult.gameSettings.minPercentOfRightAnswers
+//            )
 
             tvScorePercentage.text = String.format(
                 getString(R.string.score_percentage),
                 getPercentOfRightAnswers()
             )
 
-            buttonRetry.setOnClickListener {
-                restartGame()
-            }
         }
 
     }
