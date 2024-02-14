@@ -30,7 +30,9 @@ class FragmentResult : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        bindViews()
+        private fun bindViews() {
+            binding.gameResult = args.gameResult
+        }
 
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -44,10 +46,6 @@ class FragmentResult : Fragment() {
         binding.buttonRetry.setOnClickListener {
             restartGame()
         }
-    }
-
-    private fun bindViews() {
-        binding.gameResult = args.gameResult
     }
 
     override fun onDestroyView() {
