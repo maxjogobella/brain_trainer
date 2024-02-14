@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/fragmentStart">
+    <fragment
+        android:id="@+id/fragmentStart"
+        android:name="com.example.brain_kid.presentation.fragment.FragmentStart"
+        android:label="FragmentStart" >
+        <action
+            android:id="@+id/action_fragmentStart_to_onBoarding1"
+            app:destination="@id/onBoarding1" />
+        <action
+            android:id="@+id/action_fragmentStart_to_fragmentLevel"
+            app:destination="@id/fragmentLevel" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentGame"
+        android:name="com.example.brain_kid.presentation.fragment.FragmentGame"
+        android:label="fragment_game"
+        tools:layout="@layout/fragment_game" >
+        <action
+            android:id="@+id/action_fragmentGame_to_fragmentResult"
+            app:destination="@id/fragmentResult" />
+        <argument
+            android:name="level"
+            app:argType="com.example.brain_kid.domain.model.Level" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentLevel"
+        android:name="com.example.brain_kid.presentation.fragment.FragmentLevel"
+        android:label="fragment_level"
+        tools:layout="@layout/fragment_level" >
+        <action
+            android:id="@+id/action_fragmentLevel_to_fragmentGame"
+            app:destination="@id/fragmentGame" />
+        <action
+            android:id="@+id/action_fragmentLevel_to_fragmentRules"
+            app:destination="@id/fragmentRules" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentRules"
+        android:name="com.example.brain_kid.presentation.fragment.FragmentRules"
+        android:label="fragment_rules"
+        tools:layout="@layout/fragment_rules" >
+        <action
+            android:id="@+id/action_fragmentRules_to_fragmentLevel"
+            app:destination="@id/fragmentLevel" />
+    </fragment>
+    <fragment
+        android:id="@+id/onBoarding1"
+        android:name="com.example.brain_kid.presentation.fragment.OnBoarding1"
+        android:label="onboarding1"
+        tools:layout="@layout/onboarding1" >
+        <action
+            android:id="@+id/action_onBoarding1_to_onBoarding2"
+            app:destination="@id/onBoarding2" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentResult"
+        android:name="com.example.brain_kid.presentation.fragment.FragmentResult"
+        android:label="fragment_result"
+        tools:layout="@layout/fragment_result" >
+        <action
+            android:id="@+id/action_fragmentResult_to_fragmentLevel"
+            app:destination="@id/fragmentLevel"
+            app:popUpTo="@id/fragmentLevel"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="gameResult"
+            app:argType="com.example.brain_kid.domain.model.GameResult" />
+    </fragment>
+    <fragment
+        android:id="@+id/onBoarding2"
+        android:name="com.example.brain_kid.presentation.fragment.OnBoarding2"
+        android:label="onboarding2"
+        tools:layout="@layout/onboarding2" >
+        <action
+            android:id="@+id/action_onBoarding2_to_fragmentLevel"
+            app:destination="@id/fragmentLevel" />
+    </fragment>
+</navigation>

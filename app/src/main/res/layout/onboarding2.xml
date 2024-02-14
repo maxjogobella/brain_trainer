@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.fragment.OnBoarding2"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FBE5C8">
+
+        <ImageView
+            android:id="@+id/logoIdea"
+            android:layout_width="256dp"
+            android:layout_height="256dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginBottom="32dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@null"
+            android:src="@drawable/hand"
+            app:layout_constraintBottom_toTopOf="@+id/titleOnBoarding2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/titleOnBoarding2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_onborading_2"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/descriptionOnBoarding2"
+            app:layout_constraintTop_toBottomOf="@id/logoIdea" />
+
+        <TextView
+            android:id="@+id/descriptionOnBoarding2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:alpha="0.5"
+            android:text="@string/description_onboarding_2"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/titleOnBoarding2"
+            tools:layout_editor_absoluteX="32dp" />
+
+        <Button
+            style="@style/style_button"
+            android:id="@+id/buttonOnBoarding2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="32dp"
+            android:text="@string/want_to_play"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionOnBoarding2"
+            tools:layout_editor_absoluteX="32dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>
