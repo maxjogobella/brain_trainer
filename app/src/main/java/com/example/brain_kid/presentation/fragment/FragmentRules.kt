@@ -5,11 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.brain_kid.R
-import com.example.brain_kid.databinding.FragmentResultBinding
 import com.example.brain_kid.databinding.FragmentRulesBinding
-import com.example.brain_kid.presentation.FragmentUtils
-import com.example.brain_kid.presentation.MainActivity
 
 class FragmentRules : Fragment() {
 
@@ -35,21 +33,11 @@ class FragmentRules : Fragment() {
     }
 
     private fun launchOnFragmentLevel() {
-        FragmentUtils.launchFragmentWithAnimation(
-            requireActivity().supportFragmentManager,
-            R.id.main_container,
-            FragmentLevel.newInstance()
-        )
+       findNavController().navigate(R.id.action_fragmentRules_to_fragmentLevel)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    companion object {
-        fun newInstance() : FragmentRules {
-            return FragmentRules()
-        }
     }
 }

@@ -6,10 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.brain_kid.R
 import com.example.brain_kid.databinding.Onboarding2Binding
-import com.example.brain_kid.presentation.FragmentUtils
-import com.example.brain_kid.presentation.MainActivity
 
 class OnBoarding2 : Fragment() {
 
@@ -29,30 +28,25 @@ class OnBoarding2 : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.buttonOnBoarding2.setOnClickListener{
             launchOnFragmentLevel()
         }
     }
 
     private fun launchOnFragmentLevel() {
-        FragmentUtils.launchFragmentWithAnimation(
-            requireActivity().supportFragmentManager,
-            R.id.main_container,
-            FragmentLevel.newInstance()
-        )
-
-        commitPreferences(MainActivity.SHARED_PREF_KEY_ONBOARDING,
-            MainActivity.ONBOARDING_INVISIBLE)
+        findNavController().navigate(R.id.action_onBoarding2_to_fragmentLevel)
+        commitPreferences(FragmentStart.EXTRA_KEY_ONBOARDING, SHOULD_SHOW_ONBOARDING)
     }
 
     private fun commitPreferences(
         key : String,
-        value : Int
+        value : Boolean
     ) {
         requireActivity().getSharedPreferences(
-            MainActivity.SHARED_PREF_NAME,
+            FragmentStart.SHARED_PREF_NAME,
             AppCompatActivity.MODE_PRIVATE
-        ).edit().putInt(key, value).apply()
+        ).edit().putBoolean(key, value).apply()
     }
 
 
@@ -62,8 +56,6 @@ class OnBoarding2 : Fragment() {
     }
 
     companion object {
-        fun newInstance() : OnBoarding2 {
-            return OnBoarding2()
-        }
+        private const val SHOULD_SHOW_ONBOARDING = false
     }
 }

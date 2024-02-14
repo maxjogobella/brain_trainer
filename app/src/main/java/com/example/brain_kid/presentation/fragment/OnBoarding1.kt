@@ -1,15 +1,13 @@
 package com.example.brain_kid.presentation.fragment
 
-import android.content.Context.MODE_PRIVATE
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.brain_kid.R
 import com.example.brain_kid.databinding.Onboarding1Binding
-import com.example.brain_kid.presentation.FragmentUtils
 
 class OnBoarding1 : Fragment() {
 
@@ -35,22 +33,12 @@ class OnBoarding1 : Fragment() {
     }
 
     private fun launchOnBoarding2() {
-        FragmentUtils.launchFragmentWithAnimation(
-            requireActivity().supportFragmentManager,
-            R.id.main_container,
-            OnBoarding2.newInstance()
-        )
+        findNavController().navigate(R.id.action_onBoarding1_to_onBoarding2)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    companion object {
-        fun newInstance() : OnBoarding1 {
-            return OnBoarding1()
-        }
     }
 
 }

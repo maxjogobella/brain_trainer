@@ -1,23 +1,21 @@
 package com.example.brain_kid.presentation.fragment
 
-import android.graphics.drawable.Drawable
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.brain_kid.R
 import com.example.brain_kid.databinding.FragmentResultBinding
-import com.example.brain_kid.domain.model.GameResult
 
 class FragmentResult : Fragment() {
 
     private var _binding : FragmentResultBinding? = null
-    private lateinit var gameResult: GameResult
+    private val args by navArgs<FragmentResultArgs>()
+
     private val binding : FragmentResultBinding
         get() = _binding ?: throw RuntimeException("FragmentResultBinding == null")
 
@@ -36,10 +34,12 @@ class FragmentResult : Fragment() {
 
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                restartGame()
+                if (isAdded) {
+                    restartGame()
+                }
             }
         }
-        requireActivity().onBackPressedDispatcher.addCallback(callback)
+      requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 
     }
 
@@ -49,17 +49,17 @@ class FragmentResult : Fragment() {
             emojiResult.setImageResource(getSmilesResId())
             tvRequiredAnswers.text = String.format(
                 getString(R.string.required_score),
-                gameResult.gameSettings.minCountOfRightAnswers,
+                args.gameResult.gameSettings.minCountOfRightAnswers,
             )
 
             tvScoreAnswers.text = String.format(
                 getString(R.string.score_answers),
-                gameResult.countOfRightAnswers
+                args.gameResult.countOfRightAnswers
             )
 
             tvRequiredPercentage.text = String.format(
                 getString(R.string.required_percentage),
-                gameResult.gameSettings.minPercentOfRightAnswers
+                args.gameResult.gameSettings.minPercentOfRightAnswers
             )
 
             tvScorePercentage.text = String.format(
@@ -75,14 +75,14 @@ class FragmentResult : Fragment() {
     }
 
     private fun getSmilesResId() : Int {
-        return if (gameResult.winner) {
+        return if (args.gameResult.winner) {
             R.drawable.win
         } else {
             R.drawable.lose
         }
     }
 
-    private fun getPercentOfRightAnswers() = with(gameResult) {
+    private fun getPercentOfRightAnswers() = with(args.gameResult) {
         if (countOfQuestions == 0) {
             0
         } else {
@@ -91,41 +91,13 @@ class FragmentResult : Fragment() {
     }
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        parseArgs()
-    }
-
-    private fun parseArgs() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            requireArguments().getParcelable(EXTRA_KEY_GAME_RESULT,
-                GameResult::class.java)?.let {
-                gameResult = it
-            }
-        }
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
     private fun restartGame() {
-        requireActivity().supportFragmentManager.popBackStack(
-            FragmentGame.NAME_BACKSTACK, FragmentManager.POP_BACK_STACK_INCLUSIVE)
-    }
-
-
-    companion object {
-
-        private const val EXTRA_KEY_GAME_RESULT = "game_result"
-        fun newInstance(gameResult: GameResult) : FragmentResult {
-            return FragmentResult().apply {
-                arguments = Bundle().apply {
-                    putParcelable(EXTRA_KEY_GAME_RESULT, gameResult)
-                }
-            }
-        }
+        findNavController().navigate(R.id.action_fragmentResult_to_fragmentLevel)
 
     }
 }

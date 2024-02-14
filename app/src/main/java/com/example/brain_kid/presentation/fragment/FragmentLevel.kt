@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.brain_kid.R
 import com.example.brain_kid.databinding.FragmentLevelBinding
 import com.example.brain_kid.domain.model.Level
-import com.example.brain_kid.presentation.FragmentUtils
 
 class FragmentLevel : Fragment() {
 
@@ -55,36 +55,17 @@ class FragmentLevel : Fragment() {
 
 
     private fun launchOnFragmentGame(level : Level) {
-        requireActivity().supportFragmentManager.beginTransaction()
-            .setCustomAnimations(
-                R.anim.slide_in,
-                R.anim.fade_out,
-                R.anim.fade_in,
-                R.anim.slide_out
-            )
-            .replace(R.id.main_container, FragmentGame.newInstance(level))
-            .addToBackStack(FragmentGame.NAME_BACKSTACK)
-            .commit()
+        findNavController().navigate(
+            FragmentLevelDirections.actionFragmentLevelToFragmentGame(level)
+        )
     }
 
     private fun launchOnFragmentRules() {
-        FragmentUtils.launchFragmentWithAnimation(
-            fragmentManager = requireActivity().supportFragmentManager,
-            containerId = R.id.main_container,
-            fragment = FragmentRules.newInstance()
-        )
+        findNavController().navigate(R.id.action_fragmentLevel_to_fragmentRules)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    companion object {
-
-        const val NAME = "FragmentLevel"
-        fun newInstance() : FragmentLevel {
-            return FragmentLevel()
-        }
     }
 }
