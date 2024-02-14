@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="gameResult"
             type="com.example.brain_kid.domain.model.GameResult" />
@@ -13,8 +14,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.fragment.FragmentResult"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        tools:context=".presentation.fragment.FragmentResult">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -22,12 +23,13 @@
             android:background="@color/main_color">
 
             <ImageView
-                android:adjustViewBounds="true"
+                emoji="@{gameResult.winner}"
                 android:id="@+id/emoji_result"
                 android:layout_width="256dp"
                 android:layout_height="256dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginBottom="32dp"
+                android:adjustViewBounds="true"
                 android:contentDescription="@null"
                 app:layout_constraintBottom_toTopOf="@+id/titleResult"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -52,12 +54,12 @@
 
             <TextView
                 android:id="@+id/tv_required_answers"
-                android:layout_width="0dp"
-                android:layout_height="17dp"
+                requiredAnswers="@{gameResult.gameSettings.minCountOfRightAnswers}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="20dp"
                 android:alpha="0.5"
-                android:text="@{gameResult.gameSettings.minCountOfRightAnswersString}"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -65,25 +67,25 @@
 
             <TextView
                 android:id="@+id/tv_score_answers"
+                scoreAnswers="@{gameResult.countOfRightAnswers}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:alpha="0.5"
-                android:text="@{String.valueOf(gameResult.countOfRightAnswers)}"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_required_answers" />
 
             <TextView
+                requiredPercentage="@{gameResult.gameSettings.minPercentOfRightAnswers}"
                 android:id="@+id/tv_required_percentage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:alpha="0.5"
-                android:text="@{gameResult.gameSettings.minPercentOfRightAnswersString}"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -91,13 +93,13 @@
 
 
             <TextView
+                scorePercentage="@{gameResult}"
                 android:id="@+id/tv_score_percentage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:alpha="0.5"
-                android:text="@string/score_percentage"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
