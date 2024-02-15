@@ -30,7 +30,7 @@ class FragmentResult : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        bindViews()
+        binding.gameResult = args.gameResult
 
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -41,55 +41,10 @@ class FragmentResult : Fragment() {
         }
       requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 
-    }
-
-    private fun bindViews() {
-
-        with(binding) {
-            emojiResult.setImageResource(getSmilesResId())
-            tvRequiredAnswers.text = String.format(
-                getString(R.string.required_score),
-                args.gameResult.gameSettings.minCountOfRightAnswers,
-            )
-
-            tvScoreAnswers.text = String.format(
-                getString(R.string.score_answers),
-                args.gameResult.countOfRightAnswers
-            )
-
-            tvRequiredPercentage.text = String.format(
-                getString(R.string.required_percentage),
-                args.gameResult.gameSettings.minPercentOfRightAnswers
-            )
-
-            tvScorePercentage.text = String.format(
-                getString(R.string.score_percentage),
-                getPercentOfRightAnswers()
-            )
-
-            buttonRetry.setOnClickListener {
-                restartGame()
-            }
-        }
-
-    }
-
-    private fun getSmilesResId() : Int {
-        return if (args.gameResult.winner) {
-            R.drawable.win
-        } else {
-            R.drawable.lose
+        binding.buttonRetry.setOnClickListener {
+            restartGame()
         }
     }
-
-    private fun getPercentOfRightAnswers() = with(args.gameResult) {
-        if (countOfQuestions == 0) {
-            0
-        } else {
-            ((countOfRightAnswers / countOfQuestions.toDouble()) * 100).toInt()
-        }
-    }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

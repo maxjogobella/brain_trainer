@@ -54,6 +54,10 @@ class FragmentGame : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+
         observeViewModel()
         setClickListenerToOptions()
 
@@ -65,19 +69,14 @@ class FragmentGame : Fragment() {
             tvOption.setOnClickListener {
                 viewModel.chooseAnswer(tvOption.text.toString().toInt())
             }
-        }
+         }
     }
 
     private fun observeViewModel() {
         with(viewModel) {
 
-            seconds.observe(viewLifecycleOwner) { seconds ->
-                binding.chronometer.text = seconds
-            }
-
             question.observe(viewLifecycleOwner) { question ->
                 with(binding) {
-                    tvSumNumber.text = question.sum.toString()
                     tvVisibleNumber.text = question.visibleNumber.toString()
 
                     for (i in 0 until tvOptions.size) {

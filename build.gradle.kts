@@ -4,4 +4,5 @@ plugins {
     id("org.jetbrains.kotlin.android") version "1.9.22" apply false
     id("com.google.devtools.ksp") version "1.9.21-1.0.15"
     id("androidx.navigation.safeargs") version "2.7.7" apply false
+    kotlin("kapt") version "1.9.22"
 }

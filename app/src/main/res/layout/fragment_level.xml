@@ -1,88 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presentation.fragment.FragmentLevel"
-    android:fillViewport="true">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+<layout>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/main_color">
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".presentation.fragment.FragmentLevel"
+        android:fillViewport="true">
 
-        <TextView
-            android:id="@+id/titleLevel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="64dp"
-            android:layout_marginEnd="8dp"
-            android:text="@string/title_level"
-            android:textColor="@color/black"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:padding="20dp"
-            android:background="@drawable/custom_button"
-            android:backgroundTint="@color/white"
-            android:id="@+id/buttonTestLevel"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="32dp"
-            android:text="@string/test"
-            app:layout_constraintTop_toBottomOf="@+id/titleLevel"
-            tools:layout_editor_absoluteX="32dp" />
+            android:background="@color/main_color">
 
-        <Button
-            style="@style/style_button"
-            android:id="@+id/buttonEasyLevel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="32dp"
-            android:text="@string/easy"
-            app:layout_constraintTop_toBottomOf="@+id/buttonTestLevel"
-            tools:layout_editor_absoluteX="32dp" />
+            <TextView
+                android:id="@+id/titleLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="64dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/title_level"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/buttonMediumLevel"
-            style="@style/style_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="32dp"
-            android:text="@string/medium"
-            app:layout_constraintTop_toBottomOf="@+id/buttonEasyLevel"
-            tools:layout_editor_absoluteX="32dp" />
+            <Button
+                android:padding="20dp"
+                android:background="@drawable/custom_button"
+                android:backgroundTint="@color/white"
+                android:id="@+id/buttonTestLevel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="32dp"
+                android:text="@string/test"
+                app:layout_constraintTop_toBottomOf="@+id/titleLevel"
+                tools:layout_editor_absoluteX="32dp" />
 
-        <Button
-            android:id="@+id/buttonHardLevel"
-            style="@style/style_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="32dp"
-            android:text="@string/hard"
-            app:layout_constraintTop_toBottomOf="@+id/buttonMediumLevel"
-            tools:layout_editor_absoluteX="32dp" />
+            <Button
+                style="@style/style_button"
+                android:id="@+id/buttonEasyLevel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="32dp"
+                android:text="@string/easy"
+                app:layout_constraintTop_toBottomOf="@+id/buttonTestLevel"
+                tools:layout_editor_absoluteX="32dp" />
 
-        <TextView
-            android:id="@+id/tvShowRules"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
-            android:text="Показать правила"
-            android:textAllCaps="true"
-            android:textColor="@android:color/darker_gray"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            <Button
+                android:id="@+id/buttonMediumLevel"
+                style="@style/style_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="32dp"
+                android:text="@string/medium"
+                app:layout_constraintTop_toBottomOf="@+id/buttonEasyLevel"
+                tools:layout_editor_absoluteX="32dp" />
+
+            <Button
+                android:id="@+id/buttonHardLevel"
+                style="@style/style_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="32dp"
+                android:text="@string/hard"
+                app:layout_constraintTop_toBottomOf="@+id/buttonMediumLevel"
+                tools:layout_editor_absoluteX="32dp" />
+
+            <TextView
+                android:id="@+id/tvShowRules"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:text="Показать правила"
+                android:textAllCaps="true"
+                android:textColor="@android:color/darker_gray"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</ScrollView>
+    </ScrollView>
+
+</layout>
+
