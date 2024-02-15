@@ -139,7 +139,7 @@ class FragmentGameViewModel(
         _gameResult.value = gameResult
     }
 
-    private fun formatTime(millisUntilFinished : Long) : String {
+    fun formatTime(millisUntilFinished : Long) : String {
         val seconds = millisUntilFinished / MILLIS_IN_SECONDS
         val minutes = seconds / SECONDS_IN_MINUTES
         val leftSeconds = seconds - (minutes * SECONDS_IN_MINUTES)

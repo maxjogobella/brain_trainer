@@ -2,6 +2,14 @@
 
 <layout>
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.brain_kid.presentation.viewmodel.FragmentGameViewModel" />
+
+    </data>
+
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         tools:context=".presentation.fragment.FragmentGame"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,23 +18,23 @@
         android:layout_height="match_parent"
         android:background="@color/main_color">
 
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <Chronometer
+                android:text="@{viewModel.seconds}"
                 android:textSize="18sp"
                 android:id="@+id/chronometer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
-                android:text="00:00"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:text="@{viewModel.question.sum}"
                 android:id="@+id/tvSumNumber"
                 style="@style/QuestionTextStyle"
                 android:layout_width="150dp"
@@ -36,11 +44,11 @@
                 android:elevation="6dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/chronometer"
-                tools:text="78" />
+                app:layout_constraintTop_toBottomOf="@id/chronometer"/>
 
 
             <TextView
+                android:text="@{viewModel.question.visibleNumber}"
                 android:id="@+id/tvVisibleNumber"
                 style="@style/QuestionTextStyle"
                 android:layout_width="100dp"

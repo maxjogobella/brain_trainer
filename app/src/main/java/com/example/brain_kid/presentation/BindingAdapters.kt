@@ -44,7 +44,6 @@ fun bindEmoji(imageView: ImageView, winner : Boolean) {
 }
 
 
-
 private fun getSmilesResId(winner: Boolean) : Int {
     return if (winner) {
         R.drawable.win
@@ -52,6 +51,7 @@ private fun getSmilesResId(winner: Boolean) : Int {
         R.drawable.lose
     }
 }
+
 
 private fun getPercentOfRightAnswers(gameResult: GameResult) = with(gameResult) {
     if (countOfQuestions == 0) {
